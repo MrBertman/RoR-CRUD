@@ -1,0 +1,16 @@
+<div>
+  <%= link_to 'New task', 'tasks/new'%>
+  <% @tasks.each do |task| %>
+      <div>
+        Task:
+        <%= task.name %>
+        Description:
+        <%= task.description %>
+        <br>
+        <%= link_to 'update task', edit_task_path(id: task.id)%>
+        <br>
+        <%= link_to 'delete task', delete_task_path(id: task.id), method: :delete %>
+      </div>
+  <% end %>
+    <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+</div>
