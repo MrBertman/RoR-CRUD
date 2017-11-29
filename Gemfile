@@ -22,6 +22,12 @@ gem 'uglifier', '>= 1.3.0'
 gem 'devise'
 gem 'bcrypt', platforms: :ruby
 
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'bootstrap', '~> 4.0.0.beta2.1'
+gem 'bootstrap-datepicker-rails', '~> 1.7', '>= 1.7.1.1'
+#gem 'rspec', '~> 3.7'
+#gem 'simplecov', '~> 0.15.1'
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

@@ -2,5 +2,7 @@
     <%= f.hidden_field :id, value: @task.id %>
     <%= f.text_field :name, value: @task.name %>
     <%= f.text_field :description, value: @task.description %>
+    <%= f.text_field :importance, value: @task.importance %>
+    <%= f.date_select :expiry, order: [:day, :month, :year], value: @task.expiry %>
     <%= f.submit "save" %>
 <% end %>

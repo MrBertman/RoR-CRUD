@@ -5,8 +5,15 @@
       <div>
         Task:
         <%= task.name %>
+        <br>
         Description:
         <%= task.description %>
+        <br>
+        Importance:
+        <%= task.importance %>
+        <br>
+        Expiry:
+        <%= task.expiry %>
         <br>
         <%= link_to 'update task', edit_task_path(id: task.id)%>
         <br>
