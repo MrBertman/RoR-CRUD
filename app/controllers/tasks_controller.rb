@@ -1,25 +1,24 @@
 class TasksController < ApplicationController
-  before_action :authenticate_user!
 
   def index
-    @tasks = Task.where(user: current_user.id).all
+    @tasks = current_user.tasks.all
     render 'tasks/index'
   end
 
   def create
-    Task.create(task_create_params)
+    current_user.tasks.create(task_create_params)
     redirect_to '/'
   end
 
   def edit
-    @task = Task.find_by(id: params[:id])
+    @task = current_user.tasks.find_by(id: params[:id])
     unless @task
       redirect_to '/'
     end
   end
 
   def update
-    task = Task.find_by(id: params[:id])
+    task = current_user.tasks.find_by(id: params[:id])
     if task && params[:task]
       task.update!(task_update_params)
     end
@@ -27,7 +26,7 @@ class TasksController < ApplicationController
   end
 
   def delete
-    task = Task.find_by(id: params[:id])
+    task = current_user.tasks.find_by(id: params[:id])
     if task
       task.destroy!
     end
@@ -35,7 +34,7 @@ class TasksController < ApplicationController
   end
 
   def task_create_params
-    params.require(:task).permit(:name, :description, :user)
+    params.require(:task).permit(:name, :description)
   end
 
   def task_update_params
