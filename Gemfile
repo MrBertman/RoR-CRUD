@@ -20,13 +20,14 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'devise'
-gem 'bcrypt', platforms: :ruby
+gem 'bcrypt', platforms: :ruby # gem uninstall bcrypt gem uninstall bcrypt-ruby gem install bcrypt --platform=ruby
 
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'bootstrap-datepicker-rails', '~> 1.7', '>= 1.7.1.1'
-#gem 'rspec', '~> 3.7'
-#gem 'simplecov', '~> 0.15.1'
+gem 'rspec', '~> 3.7'
+gem 'simplecov', '~> 0.15.1'
+gem 'rails-controller-testing'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -49,6 +50,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'rspec-rails', '~> 3.7'
 end
 
 group :development do
