@@ -31,3 +31,14 @@
 
 en:
   hello: "Hello world"
+  name: "Name"
+  description: "Description"
+  importance: "Importance"
+  done: "Done"
+  save: "Save"
+  task: "Task"
+  expiry: "Expiry"
+  update_task: "Update task"
+  delete_task: "Delete task"
+  log_out: "Log out"
+  new_task: "New task"

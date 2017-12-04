@@ -1,0 +1,13 @@
+ru:
+  hello: "Hello world"
+  name: "Имя"
+  description: "Описание"
+  importance: "Важность"
+  done: "Выполено"
+  save: "Сохранить"
+  task: "Задача"
+  expiry: "Время окончания"
+  update_task: "Обновить задачу"
+  delete_task: "Удалить задачу"
+  log_out: "Выйти"
+  new_task: "Новая задача"

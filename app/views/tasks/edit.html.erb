@@ -3,6 +3,8 @@
     <%= f.text_field :name, value: @task.name %>
     <%= f.text_field :description, value: @task.description %>
     <%= f.text_field :importance, value: @task.importance %>
+    <%= I18n.t(:done) %>
+    <%= f.check_box :done, value: @task.done %>
     <%= f.date_select :expiry, order: [:day, :month, :year], value: @task.expiry %>
-    <%= f.submit "save" %>
+    <%= f.submit I18n.t(:save) %>
 <% end %>

@@ -1,7 +1,9 @@
 <%= form_for :task do |f|-%>
-    <%= f.text_field :name, placeholder: 'name' %>
-    <%= f.text_field :description, placeholder: 'description' %>
-    <%= f.text_field :importance, placeholder: 'importance' %>
+    <%= f.text_field :name, placeholder: I18n.t(:name) %>
+    <%= f.text_field :description, placeholder: I18n.t(:description) %>
+    <%= f.text_field :importance, placeholder: I18n.t(:importance) %>
+    <%= I18n.t(:done) %>
+    <%= f.check_box :done %>
     <%= f.date_select :expiry, order: [:day, :month, :year] %>
-    <%= f.submit "save" %>
+    <%= f.submit I18n.t(:save) %>
 <% end %>
