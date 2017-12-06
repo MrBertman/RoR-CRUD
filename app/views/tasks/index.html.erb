@@ -1,8 +1,9 @@
+<%= stylesheet_link_tag 'tasks'%>
 <div>
-  <%= link_to t(:new_task), 'tasks/new'%>
+  <%= button_to t(:new_task), 'tasks/new', :method => "get"%>
   <hr>
   <% @tasks.each do |task| %>
-      <div>
+      <div class="tsk">
         <%= I18n.t(:task) %>
         <%= task.name %>
         <br>
@@ -18,11 +19,10 @@
         <%= I18n.t(:done) %>
         <%= check_box("done", value = task.done, disabled: true) %>
         <br>
-        <%= link_to I18n.t(:update_task), edit_task_path(id: task.id)%>
+        <%= link_to I18n.t(:update_task), edit_task_path(id: task.id) %>
         <br>
-        <%= link_to I18n.t(:delete_task), delete_task_path(id: task.id), method: :delete %>
-        <hr>
+        <%= button_to I18n.t(:delete_task), delete_task_path(id: task.id), method: :delete %>
       </div>
   <% end %>
-    <%= link_to(I18n.t(:log_out), destroy_user_session_path, method: :delete) %>
+    <%= button_to(I18n.t(:log_out), destroy_user_session_path, method: :delete) %>
 </div>
