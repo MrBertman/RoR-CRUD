@@ -1,0 +1,4 @@
+<%= form_for @user, url:update_locale_path(@user.locale) do |f|-%>
+    <%= f.text_field :locale, value: @user.locale %>
+    <%= f.submit I18n.t(:save) %>
+<% end %>
