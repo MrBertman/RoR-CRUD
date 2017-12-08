@@ -1,4 +1,11 @@
 RSpec.describe TasksController  do
+  def login_admin
+    before(:each) do
+      @request.env["devise.mapping"] = Devise.mappings[:admin]
+      sign_in FactoryBot.create(:admin) # Using factory girl as an example
+    end
+  end
+
   describe "GET index" do
     it "renders the index template" do
       get :index

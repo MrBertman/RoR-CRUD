@@ -17,7 +17,7 @@
         <%= task.expiry %>
         <br>
         <%= I18n.t(:done) %>
-        <%= check_box("done", value = task.done, disabled: true) %>
+        <%= check_box("Done", 'boolean_attribute', {checked: task.done, disabled: true }) %>
         <br>
         <%= link_to I18n.t(:update_task), edit_task_path(id: task.id) %>
         <br>
@@ -26,3 +26,4 @@
   <% end %>
     <%= button_to(I18n.t(:log_out), destroy_user_session_path, method: :delete) %>
 </div>
+

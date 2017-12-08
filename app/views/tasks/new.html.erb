@@ -7,3 +7,6 @@
     <%= f.date_select :expiry, order: [:day, :month, :year] %>
     <%= f.submit I18n.t(:save) %>
 <% end %>
+<% if flash[:alert] %>
+  <%= flash[:alert].join(". ")%>
+<% end %>

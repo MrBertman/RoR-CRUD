@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
 
   def index
-    @tasks = current_user.tasks.all
+    @tasks = current_user.tasks.all.order(:expiry)
     respond_to do |format|
       format.html{render 'tasks/index'}
       format.json{render :json => {tasks: @tasks}}
@@ -9,8 +9,23 @@ class TasksController < ApplicationController
   end
 
   def create
-    current_user.tasks.create(task_create_params)
-    redirect_to '/'
+    task = current_user.tasks.create(task_create_params)
+    if task.valid?
+      redirect_to '/'
+    else
+      if task.errors.any?
+        flash[:alert] = []
+        task.errors.full_messages.each do |msg|
+          flash[:alert] << msg
+        end
+      end
+      render :new
+      # render(
+      #     html: "<script>alert("+ (task.errors[:name].first) +")</script>".html_safe,
+      #     layout: 'application'
+      # )
+    end
+    #redirect_to '/'
   end
 
   def edit

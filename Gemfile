@@ -29,6 +29,8 @@ gem 'bootstrap-datepicker-rails', '~> 1.7', '>= 1.7.1.1'
 gem 'rspec', '~> 3.7'
 gem 'simplecov', '~> 0.15.1'
 gem 'rails-controller-testing'
+#gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
+gem 'factory_bot', '~> 4.8'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
