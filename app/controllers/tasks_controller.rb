@@ -20,12 +20,7 @@ class TasksController < ApplicationController
         end
       end
       render :new
-      # render(
-      #     html: "<script>alert("+ (task.errors[:name].first) +")</script>".html_safe,
-      #     layout: 'application'
-      # )
     end
-    #redirect_to '/'
   end
 
   def edit
@@ -48,6 +43,12 @@ class TasksController < ApplicationController
     if task
       task.destroy!
     end
+    redirect_to '/'
+  end
+
+  def update_locale
+    user = User.find(current_user.id)
+    user.update(:locale => params[:locale])
     redirect_to '/'
   end
 
