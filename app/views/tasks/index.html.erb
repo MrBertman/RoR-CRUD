@@ -1,6 +1,7 @@
 <%= stylesheet_link_tag 'tasks'%>
 <div>
   <%= button_to t(:new_task), 'tasks/new', :method => "get"%>
+  <%= button_to t(:lang), 'tasks/locale', :method => "get"%>
   <hr>
   <% @tasks.each do |task| %>
       <div class="tsk">

@@ -51,6 +51,12 @@ class TasksController < ApplicationController
     redirect_to '/'
   end
 
+  def update_locale
+    user = User.find(current_user.id)
+    user.update(:locale => params[:locale])
+    redirect_to '/'
+  end
+
   def task_create_params
     params.require(:task).permit(:name, :description, :importance, :expiry, :done)
   end

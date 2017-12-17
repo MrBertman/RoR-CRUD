@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   post 'tasks/new', to: 'tasks#create', as:'create_task'
   patch 'tasks/update/:id', to: 'tasks#update', as: 'update_task'
   delete 'tasks/delete/:id', to: 'tasks#delete', as: 'delete_task'
+  get 'tasks/locale', to: 'tasks#locale', as: 'locale'
+  post 'tasks/update_locale', to: 'tasks#update_locale', as: 'update_locale'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

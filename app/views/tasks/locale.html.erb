@@ -1,0 +1,5 @@
+<%= form_tag(update_locale_path ,method: :post ) do %>
+    <%= select_tag( :locale, options_for_select([["en"],["ru"]])) %>
+    <br>
+    <%= submit_tag I18n.t(:save) %>
+<% end %>
