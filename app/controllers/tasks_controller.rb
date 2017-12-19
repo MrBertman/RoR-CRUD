@@ -14,9 +14,9 @@ class TasksController < ApplicationController
       redirect_to '/'
     else
       if task.errors.any?
-        flash[:alert] = []
+        flash[:error] = []
         task.errors.full_messages.each do |msg|
-          flash[:alert] << msg
+          flash[:error] << msg
         end
       end
       render :new

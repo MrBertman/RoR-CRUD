@@ -11,6 +11,7 @@
   <body>
     <%= yield %>
 
+    <br>
     <%= render partial: "shared/locale" if user_signed_in? %>
   </body>
 </html>
