@@ -7,6 +7,9 @@
 # Ignore bundler config.
 /.bundle
 
+#ingnore .idea
+.idea/
+
 # Ignore coverage.
 /coverage/*
 # Ignore the default SQLite database.
