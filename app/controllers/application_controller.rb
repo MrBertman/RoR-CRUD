@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     if(current_user != nil)
       I18n.locale = current_user.locale || I18n.default_locale
     else
-      I18n.locale = params[:locale] || I18n.default_locale
+      I18n.locale = params[:locale] || @loc || I18n.default_locale
     end
   end
 end

@@ -1,30 +1,31 @@
 <%= stylesheet_link_tag 'tasks'%>
 <div>
   <%= button_to t(:new_task), 'tasks/new', :method => "get"%>
-  <%= button_to t(:lang), 'tasks/locale', :method => "get"%>
   <hr>
-  <% @tasks.each do |task| %>
-      <div class="tsk">
-        <%= I18n.t(:task) %>
-        <%= task.name %>
-        <br>
-        <%= I18n.t(:description) %>
-        <%= task.description %>
-        <br>
-        <%= I18n.t(:importance) %>
-        <%= task.importance %>
-        <br>
-        <%= I18n.t(:expiry) %>
-        <%= task.expiry %>
-        <br>
-        <%= I18n.t(:done) %>
-        <%= check_box("Done", 'boolean_attribute', {checked: task.done, disabled: true }) %>
-        <br>
-        <%= link_to I18n.t(:update_task), edit_task_path(id: task.id) %>
-        <br>
-        <%= button_to I18n.t(:delete_task), delete_task_path(id: task.id), method: :delete %>
-      </div>
-  <% end %>
+  <div class="task_container">
+    <% @tasks.each do |task| %>
+        <div class="task">
+          <%= I18n.t(:task) %>
+          <%= task.name %>
+          <br>
+          <%= I18n.t(:description) %>
+          <%= url_to_links(task.description) %>
+          <br>
+          <%= I18n.t(:importance) %>
+          <%= task.importance %>
+          <br>
+          <%= I18n.t(:expiry) %>
+          <%= task.expiry %>
+          <br>
+          <%= I18n.t(:done) %>
+          <%= check_box("Done", 'boolean_attribute', {checked: task.done, disabled: true }) %>
+          <br>
+          <%= link_to I18n.t(:update_task), edit_task_path(id: task.id) %>
+          <br>
+          <%= button_to I18n.t(:delete_task), delete_task_path(id: task.id), method: :delete %>
+        </div>
+    <% end %>
+  </div>
     <%= button_to(I18n.t(:log_out), destroy_user_session_path, method: :delete) %>
 </div>
 
