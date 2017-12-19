@@ -49,7 +49,7 @@ class TasksController < ApplicationController
   def update_locale
     user = User.find(current_user.id)
     user.update(:locale => params[:locale])
-    redirect_to '/'
+    redirect_back(fallback_location: root_path)
   end
 
   def task_create_params
