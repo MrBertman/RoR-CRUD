@@ -1,41 +1,91 @@
-RSpec.describe TasksController  do
-  def login_admin
+RSpec.describe TasksController do
+  describe "Without login" do
+    it "should redirect to login page" do
+      # Note, rails 3.x scaffolding may add lines like get :index, {}, valid_session
+      # the valid_session overrides the devise login. Remove the valid_session from your specs
+      get :index
+      expect(response).to redirect_to('/auth/login')
+    end
+  end
+
+  describe "With login" do
     before(:each) do
-      @request.env["devise.mapping"] = Devise.mappings[:admin]
-      sign_in FactoryBot.create(:admin) # Using factory girl as an example
+      request.env["HTTP_REFERER"] = "back_page"
+      #{@user = FactoryBot.create(:user)}"
     end
-  end
+    login_user
 
-  describe "GET index" do
-    it "renders the index template" do
-      get :index
-      expect(response).to redirect_to('/auth/login')
+    it "should have a current_user" do
+      # note the fact that you should remove the "validate_session" parameter if this was a scaffold-generated controller
+      expect(subject.current_user).to_not eq(nil)
     end
-    it "login" do
-      get :index
 
-      expect(response).to redirect_to('/auth/login')
+    it "should get index" do
+      # Note, rails 3.x scaffolding may add lines like get :index, {}, valid_session
+      # the valid_session overrides the devise login. Remove the valid_session from your specs
+      get :index
+      expect(response).to be_success
     end
-  end
-  describe "Login", :type => :feature do
-    it "Log in" do
-      visit '/auth/login'
-      within("#new_user") do
-        fill_in 'Email', with: 'adimn@admin.com'
-        fill_in 'Password', with: 'password'
+
+    describe "should show tasks" do
+
+      it "render page" do
+        get :index
+
+        expect(response).to render_template('index')
       end
-      click_button 'Log in'
-      expect(response.status).to eq(200)
     end
-  end
-  describe "Tasks process", :type => :feature do
-    before :each do
-      visit '/auth/login'
-      within("#new_user") do
-        fill_in 'Email', with: 'adimn@admin.com'
-        fill_in 'Password', with: 'password'
+    describe "task creation and validation"  do
+
+      it "should create task" do
+        post :create, params: { task: {name: 't1', description: 'desc', importance: 'low', expiry: Date.today(), done: false } }
+
+        expect(response).to redirect_to('/')
       end
-      click_button 'Log in'
+
+      it "render new page if validation fail" do
+        post :create, params: {task: {name: nil}}
+
+        expect(response).to render_template('new')
+      end
+    end
+
+    describe "update task"  do
+      before(:each) do
+        @task = FactoryBot.create(:task, user: subject.current_user)
+      end
+
+      it "correct redirect to edition page" do
+        get :edit, params: { id:@task.id }
+
+        expect(response).to be_success
+      end
+
+      it "update data" do
+        post :update, params: { id:@task.id, task: {name: 't1', description: 'desc', importance: 'low', expiry: Date.today(), done: false }}
+
+        expect(response).to redirect_to('/')
+      end
+
+      it "redirect to main page if task don't exist" do
+        get :edit, params: { id: 0 }
+
+        expect(response).to redirect_to('/')
+      end
+
+    end
+
+    it "delete task" do
+      task = FactoryBot.create(:task, user: subject.current_user )
+      post :delete,  params: { id:task.id}
+
+      expect(response).to redirect_to('/')
+    end
+
+    it "update locale" do
+      post :update_locale, params: {locale: 'ru'}
+
+      expect(response).to redirect_to("back_page")
     end
   end
 end

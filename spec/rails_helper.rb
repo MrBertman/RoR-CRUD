@@ -1,6 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
-require 'support/factory_bot'
+require 'devise'
 #require 'simplecov'
 #SimpleCov.start
 ENV['RAILS_ENV'] ||= 'test'
@@ -11,6 +11,9 @@ puts "required simplecov"
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require 'support/factory_bot'
+require 'factories/factories'
+require_relative 'support/controller_macros'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -42,6 +45,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.include Capybara::DSL, :file_path => "spec/requests"
   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.extend ControllerMacros, :type => :controller
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.

@@ -10,14 +10,12 @@ class TasksController < ApplicationController
 
   def create
     task = current_user.tasks.create(task_create_params)
-    if task.valid?
+    if task.errors.empty?
       redirect_to '/'
     else
-      if task.errors.any?
-        flash[:error] = []
-        task.errors.full_messages.each do |msg|
-          flash[:error] << msg
-        end
+      flash[:error] = []
+      task.errors.full_messages.each do |msg|
+        flash[:error] << msg
       end
       render :new
     end

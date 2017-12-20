@@ -12,3 +12,22 @@ ru:
   log_out: "Выйти"
   new_task: "Новая задача"
   lang: "Язык"
+  empty_task_name: "поле не должно быть пустым"
+  characters_lenght_allowed: "максимально допустимая длина"
+  invalid_importance: "не допустимая важность"
+  activerecord:
+    models:
+      task:
+    attributes:
+      task:
+        name: "Имя"
+        importance: "Важность"
+    errors:
+      models:
+        task:
+          attributes:
+            name:
+              blank: "поле не должно быть пустым"
+              too_long: "максимально допустимая длинна %{count}"
+            importance:
+              inclusion: "не допустимая важность"

@@ -43,3 +43,22 @@ en:
   log_out: "Log out"
   new_task: "New task"
   lang: "Language"
+  empty_task_name: "must be given please"
+  characters_lenght_allowed:  "characters is the maximum allowed"
+  invalid_importance: "is not valid importance"
+  activerecord:
+    models:
+      task:
+    attributes:
+      task:
+        name: "Name"
+        importance: "Importance"
+    errors:
+      models:
+        task:
+          attributes:
+            name:
+              blank: "must be given please"
+              too_long: "%{count} characters is the maximum allowed"
+            importance:
+              inclusion: "is not valid importance"
