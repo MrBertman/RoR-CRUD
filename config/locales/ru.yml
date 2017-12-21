@@ -2,7 +2,6 @@ ru:
   hello: "Hello world"
   name: "Имя"
   description: "Описание"
-  importance: "Важность"
   done: "Выполено"
   save: "Сохранить"
   task: "Задача"
@@ -17,11 +16,12 @@ ru:
   invalid_importance: "не допустимая важность"
   activerecord:
     models:
-      task:
+      task: "Задача"
     attributes:
       task:
         name: "Имя"
         importance: "Важность"
+        description: "Описание"
     errors:
       models:
         task:

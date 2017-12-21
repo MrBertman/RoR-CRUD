@@ -32,8 +32,6 @@
 en:
   hello: "Hello world"
   name: "Name"
-  description: "Description"
-  importance: "Importance"
   done: "Done"
   save: "Save"
   task: "Task"
@@ -45,14 +43,15 @@ en:
   lang: "Language"
   empty_task_name: "must be given please"
   characters_lenght_allowed:  "characters is the maximum allowed"
-  invalid_importance: "is not valid importance"
+  invalid_importance: "invalid importance"
   activerecord:
     models:
-      task:
+      task: "Task"
     attributes:
       task:
         name: "Name"
         importance: "Importance"
+        description: "Description"
     errors:
       models:
         task:
@@ -61,4 +60,4 @@ en:
               blank: "must be given please"
               too_long: "%{count} characters is the maximum allowed"
             importance:
-              inclusion: "is not valid importance"
+              inclusion: "invalid importance"

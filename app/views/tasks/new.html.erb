@@ -1,11 +1,21 @@
 <%= form_for :task do |f|-%>
-    <%= f.text_field :name, placeholder: I18n.t(:name) %>
-    <%= f.text_field :description, placeholder: I18n.t(:description) %>
-    <%= f.text_field :importance, placeholder: I18n.t(:importance) %>
-    <%= I18n.t(:done) %>
-    <%= f.check_box :done %>
-    <%= f.date_select :expiry, order: [:day, :month, :year] %>
-    <%= f.submit I18n.t(:save) %>
+  <%= f.label :name, Task.human_attribute_name('name') + ":" %>
+  <br>
+  <%= f.text_field :name, placeholder: Task.human_attribute_name('name') %>
+  <br>
+  <%= f.label :description, Task.human_attribute_name('description') + ":" %>
+  <br>
+  <%= f.text_field :description, placeholder: Task.human_attribute_name('description') %>
+  <br>
+  <%= f.label :importance, Task.human_attribute_name('importance') + ":" %>
+  <br>
+  <%= f.select :importance, options_for_select([['low'],['middle'],['high']]), placeholder: Task.human_attribute_name('importance') %>
+  <br>
+  <%= I18n.t(:done) %>
+  <%= f.check_box :done %>
+  <br>
+  <%= f.datetime_select :expiry, order: [:day, :month, :year, :hour, :minute] %>
+  <%= f.submit I18n.t(:save) %>
 <% end %>
 <% if flash[:error] %>
   <%= flash[:error].join(". ")%>

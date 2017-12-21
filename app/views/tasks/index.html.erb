@@ -5,13 +5,13 @@
   <div class="task_container">
     <% @tasks.each do |task| %>
         <div class="task">
-          <%= I18n.t(:task) %>
+          <%= Task.model_name.human %>
           <%= task.name %>
           <br>
-          <%= I18n.t(:description) %>
+          <%= Task.human_attribute_name(:description) %>
           <%= url_to_links(task.description) %>
           <br>
-          <%= I18n.t(:importance) %>
+          <%= Task.human_attribute_name('importance') %>
           <%= task.importance %>
           <br>
           <%= I18n.t(:expiry) %>

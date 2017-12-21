@@ -11,6 +11,7 @@ class TasksController < ApplicationController
   def create
     task = current_user.tasks.create(task_create_params)
     if task.errors.empty?
+      #TaskCleanerWorker.perform_at(task.expiry, task.id)
       redirect_to '/'
     else
       flash[:error] = []
@@ -39,6 +40,7 @@ class TasksController < ApplicationController
   def delete
     task = current_user.tasks.find_by(id: params[:id])
     if task
+      #TaskMailer.task_deleted(task).deliver_later(wait: 5.minute)
       task.destroy!
     end
     redirect_to '/'
