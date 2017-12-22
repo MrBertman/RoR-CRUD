@@ -1,6 +1,10 @@
 // Place all the styles related to the tasks controller here.
-// They will automatically be included in application.css.
+// They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.general-page {
+  margin-top: 75px;
+}
 
 .task_container {
   background-color: #CCCCCC;
@@ -16,4 +20,12 @@
   padding: 20px;
   #width: 200px;
   #height: 150px;
+}
+
+.deleteButton {
+  color: #000099;
+}
+
+.card{
+  margin: 10px;
 }

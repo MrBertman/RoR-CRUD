@@ -79,7 +79,7 @@ RSpec.describe TasksController do
       task = FactoryBot.create(:task, user: subject.current_user )
       post :delete,  params: { id:task.id}
 
-      expect(response).to redirect_to('/')
+      expect(response).to be_success
     end
 
     it "update locale" do

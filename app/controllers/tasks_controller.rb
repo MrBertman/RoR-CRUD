@@ -41,9 +41,12 @@ class TasksController < ApplicationController
     task = current_user.tasks.find_by(id: params[:id])
     if task
       #TaskMailer.task_deleted(task).deliver_later(wait: 5.minute)
-      task.destroy!
+      if(task.destroy!)
+        render :json => {success: true}
+      end
     end
-    redirect_to '/'
+
+      #redirect_to '/'
   end
 
   def update_locale

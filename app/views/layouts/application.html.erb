@@ -3,15 +3,15 @@
   <head>
     <title>SimpleCrud</title>
     <%= csrf_meta_tags %>
-
+    <%= stylesheet_link_tag 'tasks'%>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render partial: "shared/locale" if user_signed_in? %>
   </head>
 
   <body>
+    <div class="general-page">
     <%= yield %>
-
-    <br>
-    <%= render partial: "shared/locale" if user_signed_in? %>
+    </div>
   </body>
 </html>

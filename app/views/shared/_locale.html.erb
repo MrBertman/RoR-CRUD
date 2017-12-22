@@ -1,3 +1,17 @@
-<%= t("lang") %>
-<%= link_to ("eng"), update_locale_path(locale: "en"), method: :post %>
-<%= link_to ("rus"), update_locale_path(locale: "ru"), method: :post %>
+<nav class="navbar fixed-top navbar-light bg-light">
+  <ul class="navbar-nav mr-auto">
+    <li class="navbar-item">
+      <%= button_to t(:new_task), 'tasks/new', :method => "get"%>
+    </li>
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    <li>
+      <%= t("lang") %>
+      <%= link_to ("eng"), update_locale_path(locale: "en"), method: :post %>
+      <%= link_to ("rus"), update_locale_path(locale: "ru"), method: :post %>
+    </li>
+    <li class="navbar-nav">
+      <%= button_to(I18n.t(:log_out), destroy_user_session_path, method: :delete) %>
+    </li>
+  </ul>
+</nav>

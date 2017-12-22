@@ -31,6 +31,9 @@
 
 en:
   hello: "Hello world"
+  low: "Low"
+  middle: "Middle"
+  high: "High"
   name: "Name"
   done: "Done"
   save: "Save"

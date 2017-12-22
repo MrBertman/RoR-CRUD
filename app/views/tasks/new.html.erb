@@ -9,12 +9,14 @@
   <br>
   <%= f.label :importance, Task.human_attribute_name('importance') + ":" %>
   <br>
-  <%= f.select :importance, options_for_select([['low'],['middle'],['high']]), placeholder: Task.human_attribute_name('importance') %>
+  <%= f.select :importance, options_for_select({t(:low)=>'low',t(:middle)=>'middle',t(:high)=>'high'}, 'middle') %>
   <br>
   <%= I18n.t(:done) %>
   <%= f.check_box :done %>
   <br>
-  <%= f.datetime_select :expiry, order: [:day, :month, :year, :hour, :minute] %>
+  <%= f.datetime_select :expiry,
+                        order: [:day, :month, :year, :hour, :minute] %>
+  <br>
   <%= f.submit I18n.t(:save) %>
 <% end %>
 <% if flash[:error] %>
