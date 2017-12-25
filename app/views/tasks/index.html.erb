@@ -3,8 +3,8 @@
     <div class="row">
       <% @tasks.each do |task| %>
         <div class="col-xl-3 col-sm-6">
-          <div class="card" data-task-id="<%= task.id %>">
-            <div class="card-body bg-light mb-3">
+          <div class="card">
+            <div class="card-body bg-light mb-3" data-task-id="<%= task.id %>">
               <div class="card-header">
                 <%= Task.model_name.human %>
                 <%= task.name %>
@@ -23,7 +23,7 @@
               <br>
               <%= link_to I18n.t(:update_task), edit_task_path(id: task.id)%>
               <br>
-              <button id="btnDelete"><%=I18n.t(:delete_task) %></button>
+              <button class="btnDelete"><%=I18n.t(:delete_task) %></button>
               <br>
               <!-- <%= button_to I18n.t(:delete_task), delete_task_path(id: task.id), method: :delete %> -->
             </div>

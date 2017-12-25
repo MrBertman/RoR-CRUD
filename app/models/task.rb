@@ -1,4 +1,6 @@
 class Task < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
   belongs_to :user
   enum :importance => [:high, :middle, :low]
   validates :name, presence: true #{ message: I18n.t('empty_task_name') }
@@ -6,7 +8,9 @@ class Task < ApplicationRecord
   validates :description, length: { maximum: 500, message: "%{count} "+ I18n.t('characters_lenght_allowed') }
   validates :importance, inclusion: { :in => %w(high middle low),  message: "%{value} " + I18n.t('invalid_importance') }
 
-  def delete_old_tasks
-
+  mappings dynamic: false do
+    indexes :name, type: 'string'
   end
 end
+#Task.create_index
+#Task.import force: true
