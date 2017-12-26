@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   delete 'tasks/delete/:id', to: 'tasks#delete', as: 'delete_task'
   get 'tasks/locale', to: 'tasks#locale', as: 'locale'
   post 'tasks/update_locale', to: 'tasks#update_locale', as: 'update_locale'
+  get 'tasks/search', to: 'tasks#search', as: 'search_task'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

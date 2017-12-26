@@ -24,8 +24,16 @@ class TasksController < ApplicationController
   end
 
   def edit
-    tsk = Task.search params[:id]
     @task = current_user.tasks.find_by(id: params[:id])
+    resp = Task.search params[:id]
+    puts("Elasticsearch resp total results: #{resp.records.count()}")
+    puts(" Elasticsearch by id result: #{resp.records.to_json}")
+    resp = Task.search @task.name
+    puts("Elasticsearch resp total results: #{resp.records.count()}")
+    puts(" Elasticsearch by name result: #{resp.records.to_json}")
+    resp = Task.search @task.user_id
+    puts("Elasticsearch resp total results: #{resp.records.count()}")
+    puts(" Elasticsearch by user_id result: #{resp.records.to_json}")
     unless @task
       redirect_to '/'
     end
@@ -49,6 +57,16 @@ class TasksController < ApplicationController
     end
 
       #redirect_to '/'
+  end
+
+  def search
+    # if (params[:term].empty? )
+    #   redirect_to 'tasks/index'
+    # end
+    task_search_response = Task.search params[:term]
+    puts(task_search_response.records.count())
+    @tasks = task_search_response.records
+    render :index
   end
 
   def update_locale
