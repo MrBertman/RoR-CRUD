@@ -1,7 +1,6 @@
 class TasksController < ApplicationController
 
   def index
-    #Task.import
     @tasks = current_user.tasks.all.order(:expiry)
     respond_to do |format|
       format.html{render 'tasks/index'}
@@ -12,7 +11,7 @@ class TasksController < ApplicationController
   def create
     task = current_user.tasks.create(task_create_params)
     if task.errors.empty?
-      TaskCleanerWorker.perform_at(task.expiry, task.id)
+      #TaskCleanerWorker.perform_at(task.expiry, task.id)
       redirect_to '/'
     else
       flash[:error] = []
@@ -24,7 +23,6 @@ class TasksController < ApplicationController
   end
 
   def edit
-    tsk = Task.search params[:id]
     @task = current_user.tasks.find_by(id: params[:id])
     unless @task
       redirect_to '/'
@@ -49,6 +47,16 @@ class TasksController < ApplicationController
     end
 
       #redirect_to '/'
+  end
+
+  def search
+    # if (params[:term].empty? )
+    #   redirect_to 'tasks/index'
+    # end
+    task_search_response = Task.search params[:term]
+    puts(task_search_response.records.count())
+    @tasks = task_search_response.records
+    render :index
   end
 
   def update_locale

@@ -10,6 +10,7 @@ jQuery(function($) {
                 data: { _method: 'DELETE'},
                 success: function (result) {
                     $(current_task.parent()).fadeOut(400)
+                    // $(current_task.parent()).destroy()
                     console.log(result)
                 }
             })

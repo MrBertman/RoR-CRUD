@@ -5,6 +5,7 @@ module Searchable
 
   included do
     include Elasticsearch::Model
+    #include Elasticsearch::Model::Callbacks
 
     mapping do
       # ...
