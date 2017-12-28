@@ -1,4 +1,15 @@
 RSpec.describe TasksController do
+  WebMock.disable_net_connect!
+  before(:each) do
+    any_uri = Addressable::Template.new "http://localhost:9200/tasks/task/{id}"
+    stub_request(:any, any_uri).
+        to_return(status: 200, body: "", headers: {})
+
+    update_uri = Addressable::Template.new "http://localhost:9200/tasks/task/{id}/_update"
+    stub_request(:any, update_uri).
+        to_return(status: 200, body: "", headers: {})
+  end
+
   describe "Without login" do
     it "should redirect to login page" do
       # Note, rails 3.x scaffolding may add lines like get :index, {}, valid_session

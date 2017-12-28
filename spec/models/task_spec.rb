@@ -2,6 +2,12 @@
 #require 'models/task'
 
 describe Task do
+  WebMock.disable_net_connect!
+  before(:each) do
+    stub_request(:delete, "http://localhost:9200/tasks").
+        with(headers: {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>'Faraday v0.13.1'}).
+        to_return(status: 200, body: "", headers: {})
+  end
 
   it 'validate name' do
     task = Task.create(name: '')

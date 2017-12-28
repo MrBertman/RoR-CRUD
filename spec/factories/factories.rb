@@ -9,6 +9,7 @@ FactoryBot.define do
   factory :task do
     user { association(:user) }
     #association :user_id, factory: :user, strategy: :create
+    #id 70
     name "tsk"
     description "desc"
     created_at Date.today()
