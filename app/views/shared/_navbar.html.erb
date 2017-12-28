@@ -1,10 +1,10 @@
 <nav class="navbar fixed-top navbar-dark bg-dark">
   <ul class="navbar-nav mr-auto">
     <li class="navbar-item">
-      <%= button_to t(:new_task), 'tasks/new', :method => "get"%>
+      <%= button_to t(:new_task), new_task_url, :method => "get" %>
     </li>
     <li class="navbar-item">
-      <%= button_to 'Home', '/', :method => "get"%>
+      <%= button_to t(:home), '/', :method => "get"%>
     </li>
   </ul>
   <ul class="navbar-nav ml-auto">
@@ -14,12 +14,10 @@
       <%= link_to ("rus"), update_locale_path(locale: "ru"), method: :post %>
     </li>
     <li class="navbar-item">
-      <%= form_for :term, url: search_task_path, method: :get do |form| %>
-        <p>
+        <%= form_for :term, url: search_task_path, method: :get do |form| %>
           <%= text_field_tag :term, params[:term] %>
           <%= submit_tag "Search", name: nil %>
-        </p>
-      <% end %>
+        <% end %>
     </li>
     <li class="navbar-item">
       <%= button_to(I18n.t(:log_out), destroy_user_session_path, method: :delete) %>

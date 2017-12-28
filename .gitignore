@@ -8,7 +8,7 @@
 /.bundle
 
 #ingnore .idea
-.idea/
+/.idea/*
 
 # Ignore coverage.
 /coverage/*
