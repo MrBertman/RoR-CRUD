@@ -3,25 +3,14 @@
     <li class="navbar-item">
       <%= button_to t(:new_task), 'tasks/new', :method => "get"%>
     </li>
-    <li class="navbar-item">
-      <%= button_to 'Home', '/', :method => "get"%>
-    </li>
   </ul>
   <ul class="navbar-nav ml-auto">
-    <li class="navbar-item">
+    <li>
       <%= t("lang") %>
       <%= link_to ("eng"), update_locale_path(locale: "en"), method: :post %>
       <%= link_to ("rus"), update_locale_path(locale: "ru"), method: :post %>
     </li>
-    <li class="navbar-item">
-      <%= form_for :term, url: search_task_path, method: :get do |form| %>
-        <p>
-          <%= text_field_tag :term, params[:term] %>
-          <%= submit_tag "Search", name: nil %>
-        </p>
-      <% end %>
-    </li>
-    <li class="navbar-item">
+    <li class="navbar-nav">
       <%= button_to(I18n.t(:log_out), destroy_user_session_path, method: :delete) %>
     </li>
   </ul>

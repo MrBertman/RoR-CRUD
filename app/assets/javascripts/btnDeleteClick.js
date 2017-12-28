@@ -1,7 +1,7 @@
 jQuery(function($) {
 
     $(".btnDelete").click(function () {
-        var current_task = $(this).parent();
+        var current_task = $(this).parent().parent();
         console.log($(current_task).attr('data-task-id'))
         if(confirm("Delete")){
             $.ajax({
