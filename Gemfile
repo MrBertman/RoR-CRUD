@@ -39,6 +39,11 @@ gem 'elasticsearch-model', '~> 5.0'
 gem 'rspec-mocks', '~> 3.7'
 gem 'rspec-activemodel-mocks', '~> 1.0'
 gem 'mocha', '~> 1.3'
+gem 'sinatra', '~> 2.0'
+gem 'lograge'
+gem 'logstash-logger', '~> 0.25.1'
+gem 'logstasher'
+
 #gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
 
 # Use CoffeeScript for .coffee assets and views

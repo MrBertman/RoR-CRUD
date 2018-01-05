@@ -1,0 +1,9 @@
+# Logfile created on 2018-01-04 10:40:55 +0200 by logger.rb/56438
+I, [2018-01-04T10:40:55.382946 #11537]  INFO -- : Task created
+I, [2018-01-04T10:45:44.202647 #12356]  INFO -- : Task created
+I, [2018-01-04T10:49:37.430857 #12356]  INFO -- : Task created47
+I, [2018-01-04T10:56:22.079554 #12356]  INFO -- Task: Task 48,Name logger 
+I, [2018-01-04T11:03:34.041010 #12356]  INFO -- Task: #<Task:0x007f0c660f8bf0>
+I, [2018-01-04T11:05:23.500194 #12356]  INFO -- Task: This is block{"id":52,"name":"log","description":"123","created_at":"2018-01-04T09:05:23.493Z","updated_at":"2018-01-04T09:05:23.493Z","user_id":"c04cd486-2378-4881-85d1-baf6228362e3","expiry":"2018-01-04T09:05:00.000Z","importance":"middle","done":false}
+I, [2018-01-04T11:07:18.984719 #12356]  INFO -- Task: Object: {"id":53,"name":"log","description":"Severity","created_at":"2018-01-04T09:07:18.979Z","updated_at":"2018-01-04T09:07:18.979Z","user_id":"c04cd486-2378-4881-85d1-baf6228362e3","expiry":"2018-01-04T09:07:00.000Z","importance":"middle","done":false}
+I, [2018-01-04T11:07:18.984823 #12356]  INFO -- : 1

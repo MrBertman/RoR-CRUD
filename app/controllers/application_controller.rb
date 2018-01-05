@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_locale
 
+  def route_not_found
+    render status => 500
+  end
+
   def set_locale
     if(user_signed_in?)
       I18n.locale = current_user.locale || I18n.default_locale

@@ -1,13 +1,13 @@
 RSpec.describe TasksController do
-  WebMock.disable_net_connect!
+  WebMock.disable_net_connect!(allow_localhost: true)
   before(:each) do
-    any_uri = Addressable::Template.new "http://localhost:9200/tasks/task/{id}"
-    stub_request(:any, any_uri).
-        to_return(status: 200, body: "", headers: {})
+    #any_uri = Addressable::Template.new
+    #stub_request(:any, /localhost:9200/).to_rack(FakeController)
+        # to_return(status: 200, body: "", headers: {})
 
-    update_uri = Addressable::Template.new "http://localhost:9200/tasks/task/{id}/_update"
-    stub_request(:any, update_uri).
-        to_return(status: 200, body: "", headers: {})
+    # update_uri = Addressable::Template.new "http://localhost:9200/tasks/task/{id}/_update"
+    # stub_request(:any, update_uri).
+    #     to_return(status: 200, body: "", headers: {})
   end
 
   describe "Without login" do
@@ -98,5 +98,11 @@ RSpec.describe TasksController do
 
       expect(response).to redirect_to("back_page")
     end
+  end
+
+  it "should do" do
+    expect(true).to eq(true)
+
+    expect(false).to eq(true)
   end
 end

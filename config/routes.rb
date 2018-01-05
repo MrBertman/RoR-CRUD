@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   get 'tasks/locale', to: 'tasks#locale', as: 'locale'
   post 'tasks/update_locale', to: 'tasks#update_locale', as: 'update_locale'
   get 'tasks/search', to: 'tasks#search', as: 'search_task'
+  # get '*unmatched_route', to: 'application#route_not_found'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

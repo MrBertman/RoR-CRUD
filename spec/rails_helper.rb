@@ -14,6 +14,8 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 require 'support/factory_bot'
 require 'factories/factories'
+require 'sinatra'
+require 'support/fake_controller'
 #require 'redis-server'
 require_relative 'support/controller_macros'
 # Add additional requires below this line. Rails is not loaded until this point!
