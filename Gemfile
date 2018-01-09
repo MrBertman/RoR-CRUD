@@ -42,7 +42,7 @@ gem 'mocha', '~> 1.3'
 gem 'sinatra', '~> 2.0'
 gem 'lograge'
 gem 'logstash-logger', '~> 0.25.1'
-gem 'logstasher'
+# gem 'logstasher'
 
 #gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
 

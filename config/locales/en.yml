@@ -57,6 +57,8 @@ en:
         importance: "Importance"
         description: "Description"
     errors:
+      messages:
+        record_invalid: "Record invalid"
       models:
         task:
           attributes:

@@ -29,6 +29,8 @@ ru:
         importance: "Важность"
         description: "Описание"
     errors:
+      messages:
+              record_invalid: "Запись невалидная"
       models:
         task:
           attributes:

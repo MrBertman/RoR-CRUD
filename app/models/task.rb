@@ -3,10 +3,24 @@ class Task < ApplicationRecord
   include Elasticsearch::Model::Callbacks
   belongs_to :user
   after_create do
-    # log = Logger.new("log/task_log_#{Date.today}.txt")
+    task_logger = LogStashLogger.new(port: 5227)
     # log.add(Logger::Severity::INFO,nil,'Task') {"Object: #{self.to_json.to_s}"}
-    # logger.info( Module: 'Task', TaskId:"#{self.id}", Status:"Created")
+    task_logger.info( ActiveRecord: "Task", Action:"Created",  Data: self.to_json.to_s)
   end
+
+  after_update do
+    task_logger = LogStashLogger.new(port: 5227)
+    # log.add(Logger::Severity::INFO,nil,'Task') {"Object: #{self.to_json.to_s}"}
+    task_logger.info( ActiveRecord: "Task", Action:"Updated",  Data: self.to_json.to_s)
+  end
+
+  after_destroy do
+    task_logger = LogStashLogger.new(port: 5227)
+    task_logger.info( ActiveRecord: "Task", Action:"Destroyed",  Data: self.to_json.to_s)
+  end
+
+
+  after_validation :log_errors, :if => Proc.new {|m| m.errors}
 
   around_update do
     # logger.info( Module: 'Task', TaskId:"#{self.id}", Status:"Updated")
@@ -26,5 +40,9 @@ class Task < ApplicationRecord
     indexes :user_id
   end
 
+  def log_errors
+    task_logger = LogStashLogger.new(port: 5227)
+    task_logger.error( ActiveRecord: "Task", Action:"Validation", ErrorMessage: self.errors.full_messages.join("\n"), Data: self.to_json)
+  end
 
 end
