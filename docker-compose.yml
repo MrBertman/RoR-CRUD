@@ -1,0 +1,29 @@
+version: '3'
+
+volumes:
+  db-data:
+    external: false
+
+services:
+  db:
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+    image: postgres:9.5
+    volumes:
+      - db-data:/usr/local/pgsql/data
+
+  app:
+    build: .
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "3002:3000"
+    depends_on:
+      - db
+    links:
+      - db
+    environment:
+      DB_USER: username
+      DB_PASSWORD: password
+      DB_HOST: db
