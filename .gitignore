@@ -26,3 +26,9 @@
 /yarn-error.log
 
 .byebug_history
+
+tmp/
+
+\.idea/
+
+esdata/
